@@ -1,3 +1,21 @@
-<body>
-    <h1>Login</h1>
-</body>
+<h1>Iniciar Sesion</h1>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form action="/login"  method="post" >
+        <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+        <input
+        type="text"
+        placeholder="ingrese su correo"
+        name="email"
+        class="form-control mb-2"
+        >
+        <input
+        type="password"
+        placeholder="ingrese su contraseña"
+        name="password"
+        class="form-control mb-2"
+        >
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+      </div>  
+</div>

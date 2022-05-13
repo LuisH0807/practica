@@ -1,14 +1,27 @@
 const express = require("express");
 const router = express.Router();
+const validarURL = require ("../middlewares/validarURL");
+const {homeUrl, agregarUrl, eliminarUrl, editarUrlForm ,editarUrl, redirect} = require("../controllers/urlController");
+const verifyUser = require("../middlewares/verifyUser");
+const { profileForm, changeProfilePic } = require("../controllers/profileController");
 
-router.get("/", (req, res)=>{  
-    const urls = [
-        {origin: "www.google.com", shortURL: "blah1"},
-        {origin: "www.facebook.com", shortURL: "blah2"},
-        {origin: "www.twitter.com", shortURL: "blah3"},
-        {origin: "www.instagram.com", shortURL: "blah4"}, 
-    ]
-        res.render("home" , {urls: urls});
-    });
+router.get("/", verifyUser ,homeUrl);
+
+router.post("/", verifyUser, validarURL,agregarUrl);
+
+router.get("/eliminar/:id", verifyUser, eliminarUrl);
+
+router.get("/editar/:id",verifyUser, editarUrlForm );
+
+router.post("/editar/:id", verifyUser, validarURL, editarUrl);
+
+router.get("/perfil", verifyUser, profileForm);
+
+router.post("/perfil", verifyUser, changeProfilePic);
+
+router.get("/:shortURL", redirect);
+
+
+
 
  module.exports=router;   
