@@ -45,7 +45,7 @@ const registerUser = async (req, res) =>{
         from: '"El PEPE 👻" <foo@example.com>',
         to: user.email,
         subject: "verifique cuenta de correo",
-        html: `<a href="${process.env.PATHURL || 'http://localhost:5000'}/auth/confirm/${user.tokenConfirm}">verificar cuenta aquí</a>`, // NO es necesario llamar al PATHURL, pero, se hace como prueba
+        html: `<a href="${process.env.PATHURL || 'http://localhost:5000'}auth/confirm/${user.tokenConfirm}">verificar cuenta aquí</a>`, // NO es necesario llamar al PATHURL, pero, se hace como prueba
     });
     
     //res.json(user);
